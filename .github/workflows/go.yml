@@ -32,7 +32,10 @@ jobs:
       run: | 
         cd thSimple
         go run main.go
+        cd ..
 
     - name: Run thTalk
+      run: | 
         cd thTalk
         go run main.go
+        cd ..
