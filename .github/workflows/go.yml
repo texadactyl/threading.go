@@ -31,11 +31,13 @@ jobs:
     - name: Run thSimple
       run: | 
         cd thSimple
-        go run main.go
+        go build -o . .
+        ./thSimple
         cd ..
 
     - name: Run thTalk
       run: | 
         cd thTalk
-        go run main.go
+        go build -o . .
+        ./thTalk
         cd ..
