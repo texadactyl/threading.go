@@ -50,6 +50,7 @@ func child(p2c chan msgType, c2p chan msgType, wg *sync.WaitGroup) {
 		log.Panicf("child %d: remove error: %s\n", request.childId, err)
 	}
 
+	// Send the reply message (same as the request message).
 	c2p <- request
 	helpers.Logger("child %d: exiting\n", request.childId)
 }

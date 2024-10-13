@@ -19,16 +19,21 @@ func child(p2c chan msgType, c2p chan msgType, wg *sync.WaitGroup) {
 
 	var request msgType
 	var ok bool
+
+	// Get a request message.
 	for {
 		request, ok = <-p2c
 		if ok {
 			break // got a request
 		}
 	}
-
 	helpers.Logger("child %d: request cmd=%s, text=%s, processId = %d, threadId = %d\n",
 		request.childId, request.cmd, request.text, processId, threadId)
+
+	// Sleep a bit.
 	time.Sleep(time.Duration(request.childId) * time.Second)
+
+	// Send a reply.
 	c2p <- msgType{
 		childId: request.childId,
 		cmd:     request.cmd,
