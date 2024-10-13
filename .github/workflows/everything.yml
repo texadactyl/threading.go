@@ -41,3 +41,7 @@ jobs:
       run: | 
         ./bin/thTalk
 
+    - name: Run thWrTemp
+      run: | 
+        ./bin/thWrTemp
+
