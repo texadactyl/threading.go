@@ -30,13 +30,13 @@ jobs:
 
     - name: Build and Install
       run: | 
-        go build -v -o . ./...
+        go build -v -o ./bin ./...
 
     - name: Run thSimple
       run: | 
-        ./thSimple
+        ./bin/thSimple
 
     - name: Run thTalk
       run: | 
-        ./thTalk
+        ./bin/thTalk
 
