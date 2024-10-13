@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"sync"
 	"syscall"
+	"threading/helpers"
 	"time"
 )
 
@@ -13,12 +13,12 @@ var wg sync.WaitGroup
 func main() {
 
 	// Number of child threads.
-	NTHREADS := 20
+	NTHREADS := 10
 
 	// Get O/S process ID and thread ID.
 	processId := os.Getpid()
 	threadId := syscall.Gettid()
-	logger("main: pid = %d, thread_id = %d\n", processId, threadId)
+	helpers.Logger("main: pid = %d, thread_id = %d\n", processId, threadId)
 
 	// Start the clock.
 	t1 := time.Now()
@@ -37,6 +37,6 @@ func main() {
 
 	// Report.
 	elapsed := t2.Sub(t1)
-	fmt.Printf("main: Elapsed time is: %.2f seconds\n", elapsed.Seconds())
+	helpers.Logger("main: Elapsed time is: %.2f seconds\n", elapsed.Seconds())
 
 }

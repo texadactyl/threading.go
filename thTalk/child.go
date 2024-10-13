@@ -4,6 +4,7 @@ import (
 	"os"
 	"sync"
 	"syscall"
+	"threading/helpers"
 	"time"
 )
 
@@ -26,7 +27,7 @@ func child(p2c chan msgType, c2p chan msgType, wg *sync.WaitGroup) {
 		}
 	}
 
-	logger("child %d: request cmd=%s, text=%s, processId = %d, threadId = %d\n",
+	helpers.Logger("child %d: request cmd=%s, text=%s, processId = %d, threadId = %d\n",
 		request.childId, request.cmd, request.text, processId, threadId)
 	time.Sleep(time.Duration(request.childId) * time.Second)
 	c2p <- msgType{
@@ -34,5 +35,5 @@ func child(p2c chan msgType, c2p chan msgType, wg *sync.WaitGroup) {
 		cmd:     request.cmd,
 		text:    "exit",
 	}
-	logger("child %d: exiting\n", request.childId)
+	helpers.Logger("child %d: exiting\n", request.childId)
 }

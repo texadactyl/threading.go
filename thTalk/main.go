@@ -4,6 +4,7 @@ import (
 	"os"
 	"sync"
 	"syscall"
+	"threading/helpers"
 	"time"
 )
 
@@ -16,7 +17,7 @@ type msgType struct {
 func main() {
 
 	// Number of child threads.
-	NTHREADS := 20
+	NTHREADS := 10
 
 	// Threading data.
 	var wg sync.WaitGroup
@@ -26,7 +27,7 @@ func main() {
 	// Get O/S process ID and thread ID.
 	processId := os.Getpid()
 	threadId := syscall.Gettid()
-	logger("main: pid = %d, thread_id = %d\n", processId, threadId)
+	helpers.Logger("main: pid = %d, thread_id = %d\n", processId, threadId)
 
 	// Start the clock.
 	t1 := time.Now()
@@ -56,7 +57,7 @@ func main() {
 				break // got a reply
 			}
 		}
-		logger("main: childId %d completed\n", reply.childId)
+		helpers.Logger("main: childId %d completed\n", reply.childId)
 	}
 
 	// Stop the clock.
@@ -64,6 +65,6 @@ func main() {
 
 	// Report.
 	elapsed := t2.Sub(t1)
-	logger("main: Elapsed time is: %.2f seconds\n", elapsed.Seconds())
+	helpers.Logger("main: Elapsed time is: %.2f seconds\n", elapsed.Seconds())
 
 }
