@@ -4,10 +4,10 @@
 package helpers
 
 import (
-	"syscall"
+	"golang.org/x/sys/windows"
 )
 
-func GetThreadID() uint64 {
-	// syscall.GetCurrentThreadId gets the thread ID on Windows
-	return uint64(syscall.GetCurrentThreadId())
+func getThreadID() uint64 {
+	// windows.GetCurrentThreadId gets the thread ID on Windows
+	return uint64(windows.GetCurrentThreadId())
 }
