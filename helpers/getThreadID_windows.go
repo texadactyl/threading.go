@@ -7,7 +7,7 @@ import (
 	"golang.org/x/sys/windows"
 )
 
-func getThreadID() uint64 {
+func GetThreadID() uint64 {
 	// windows.GetCurrentThreadId gets the thread ID on Windows
 	return uint64(windows.GetCurrentThreadId())
 }
