@@ -12,5 +12,3 @@ func Logger(format string, args ...interface{}) {
 	defer lock.Unlock()
 	fmt.Printf(format, args...)
 }
-
-// getThreadID() is implemented in separate files, one for each platform.
