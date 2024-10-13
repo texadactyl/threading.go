@@ -30,6 +30,7 @@ jobs:
 
     - name: Build and Install
       run: | 
+        go get golang.org/x/sys
         go build -v -o ./bin ./...
 
     - name: Run thSimple
