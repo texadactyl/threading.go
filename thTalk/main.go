@@ -3,7 +3,6 @@ package main
 import (
 	"os"
 	"sync"
-	"syscall"
 	"threading/helpers"
 	"time"
 )
@@ -26,7 +25,7 @@ func main() {
 
 	// Get O/S process ID and thread ID.
 	processId := os.Getpid()
-	threadId := syscall.Gettid()
+	threadId := helpers.GetThreadID()
 	helpers.Logger("main: pid = %d, thread_id = %d\n", processId, threadId)
 
 	// Start the clock.

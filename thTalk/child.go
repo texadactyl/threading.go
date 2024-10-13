@@ -3,7 +3,6 @@ package main
 import (
 	"os"
 	"sync"
-	"syscall"
 	"threading/helpers"
 	"time"
 )
@@ -16,7 +15,7 @@ import (
 func child(p2c chan msgType, c2p chan msgType, wg *sync.WaitGroup) {
 	defer wg.Done()
 	processId := os.Getpid()
-	threadId := syscall.Gettid()
+	threadId := helpers.GetThreadID()
 
 	var request msgType
 	var ok bool
