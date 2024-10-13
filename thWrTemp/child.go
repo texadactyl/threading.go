@@ -39,7 +39,7 @@ func child(p2c chan msgType, c2p chan msgType, wg *sync.WaitGroup) {
 			log.Panicf("child %d: write error: %s\n", request.childId, err)
 		}
 		helpers.Logger("child %d: record #%d written\n", request.childId, ii+1)
-		time.Sleep(time.Duration(request.childId) * time.Second)
+		time.Sleep(time.Duration(request.childId*100) * time.Millisecond)
 	}
 	err = request.fhandle.Close()
 	if err != nil {
