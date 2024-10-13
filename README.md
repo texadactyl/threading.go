@@ -7,3 +7,5 @@ Experimenting with Golang threading.
   - The parent thread waits to get a reply from each child.
 
 Getting the O/S thread ID across platforms to work in package helpers was a lot of fun!
+
+So, as Go low-level documentation states, they use O/S threads although they are shared across the launched Goroutines.
