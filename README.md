@@ -5,3 +5,5 @@ Experimenting with Golang threading.
   - One parent thread, multiple child threads.
   - Each child receives a request message, sleeps a bit, and then replies.
   - The parent thread waits to get a reply from each child.
+
+Getting the O/S thread ID across platforms to work was a lot of fun!
